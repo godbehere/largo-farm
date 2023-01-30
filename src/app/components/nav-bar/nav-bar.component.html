@@ -1,0 +1,59 @@
+<!-- <nav class="navbar navbar-expand border-bottom bg-white fixed-top p-2">
+  <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none" href="/">
+      <span class="fs-4 main-title">Largo</span>
+  </a>
+  <ul class="nav nav-pills">
+    <li class="nav-item"><a id="home" class="nav-link" [routerLink]="['']" [routerLinkActiveOptions]="{ exact : true }" routerLinkActive="active">Home</a></li>
+    <li class="nav-item"><a id="beef" class="nav-link" [routerLink]="['/products']" routerLinkActive="active">Shop</a></li>
+    <li class="nav-item"><a id="login" class="nav-link">Login</a></li>
+    <li class="nav-item position-relative">
+      <a id="cart" class="nav-link" [routerLink]="['/cart']" routerLinkActive="active">Cart</a>
+      <span *ngIf="cart.products.length > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ cart.products.length }}</span>
+    </li>
+    <li class="nav-item"><a id="logout" class="nav-link" href="">Logout</a></li>
+    <li class="nav-item"><a id="register" class="nav-link" href="">Register</a></li>
+    <li class="nav-item"><a id="about" class="nav-link" href="#">About</a></li>
+  </ul>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <!-- <img> -->
+    <a class="navbar-brand" href="#">Largo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="products" routerLinkActive="products">Shop</a>
+        </li>
+        <li class="nav-item position-relative">
+          <a class="nav-link" routerLink="cart">Cart</a>
+          <!-- <span *ngIf="cart.products.length > 0" class="position-absolute top-50 start-50 translate-middle badge rounded-pill bg-danger">{{ cart.products.length }}</span> -->
+        </li>
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li> -->
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>

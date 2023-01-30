@@ -1,0 +1,256 @@
+
+<form *ngIf="progress.stage == 1" [formGroup]="generalPreferences" (ngSubmit)="onSubmit()">
+  <h2>Step 1 - General Cutting Preferences</h2>
+  <div class="mb-3">
+    <label for="steakThickness" class="form-label">Steak Thickness</label>
+    <select id="steakThickness" formControlName="steakThickness" class="form-select">
+      <option *ngFor="let thick of thickness" [ngValue]="thick.value">{{ thick.text }}</option>
+    </select>
+    <div *ngIf="generalPreferences.controls.steakThickness.invalid &&
+                  (generalPreferences.controls.steakThickness.dirty ||
+                  generalPreferences.controls.steakThickness.touched)"
+                  class="alert alert-danger">
+      <div *ngIf="generalPreferences.controls.steakThickness.errors?.['required']">
+        This field is required
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="steaksPerPackage" class="form-label">Steaks Per Package</label>
+    <select id="steaksPerPackage" formControlName="steaksPerPackage" class="form-select">
+      <option *ngFor="let st of stpp" [ngValue]="st.value">{{ st.text }}</option>
+    </select>
+    <div *ngIf="generalPreferences.controls.steaksPerPackage.invalid &&
+                  (generalPreferences.controls.steaksPerPackage.dirty ||
+                  generalPreferences.controls.steaksPerPackage.touched)"
+                  class="alert alert-danger">
+      <div *ngIf="generalPreferences.controls.steaksPerPackage.errors?.['required']">
+        This field is required
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="stewMeatPerPackage" class="form-label">Pounds of Stew Meat per Package (~1 1/2" cubes)</label>
+    <select id="stewMeatPerPackage" formControlName="stewMeatPerPackage" class="form-select">
+      <option *ngFor="let st of stpp" [ngValue]="st.value">{{ st.text }}</option>
+    </select>
+    <div *ngIf="generalPreferences.controls.stewMeatPerPackage.invalid &&
+                  (generalPreferences.controls.stewMeatPerPackage.dirty ||
+                  generalPreferences.controls.stewMeatPerPackage.touched)"
+                  class="alert alert-danger">
+      <div *ngIf="generalPreferences.controls.stewMeatPerPackage.errors?.['required']">
+        This field is required
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="mincePerPackage" class="form-label">Pounds of Mince (ground beef) per Package (all mince is x-lean)</label>
+    <select id="mincePerPackage" formControlName="mincePerPackage" class="form-select">
+      <option *ngFor="let st of stpp" [ngValue]="st.value">{{ st.text }}</option>
+    </select>
+    <div *ngIf="generalPreferences.controls.mincePerPackage.invalid &&
+                  (generalPreferences.controls.mincePerPackage.dirty ||
+                  generalPreferences.controls.mincePerPackage.touched)"
+                  class="alert alert-danger">
+      <div *ngIf="generalPreferences.controls.mincePerPackage.errors?.['required']">
+        This field is required
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="approximateRoastSize" class="form-label">Approximate Roast Size</label>
+    <select id="approximateRoastSize" formControlName="approximateRoastSize" class="form-select">
+      <option *ngFor="let size of roastSizes" [ngValue]="size.value">{{ size.text }}</option>
+    </select>
+    <div *ngIf="generalPreferences.controls.approximateRoastSize.invalid &&
+                  (generalPreferences.controls.approximateRoastSize.dirty ||
+                  generalPreferences.controls.approximateRoastSize.touched)"
+                  class="alert alert-danger">
+      <div *ngIf="generalPreferences.controls.approximateRoastSize.errors?.['required']">
+        This field is required
+      </div>
+    </div>
+  </div>
+  <fieldset class="form-check mb-3" formGroupName="offalsAndMiscellaneous">
+    <legend>Offals and Miscellaneous</legend>
+    <div *ngFor="let offal of offals">
+      <input [formControlName]="offal.value" type="checkbox" [id]="offal.value" class="form-check-input">
+      <label [for]="offal.value" class="form-check-label">{{ offal.text }}</label>
+    </div>
+  </fieldset>
+  <button type="submit" class="btn btn-primary" [disabled]="!generalPreferences.valid">Next</button>
+</form>
+
+
+
+
+
+
+<form *ngIf="progress.stage == 1" [formGroup]="detailedCut" (ngSubmit)="onSubmit()">
+  <h2>Step 2 - Detailed Cut Information</h2>
+
+  <fieldset formGroupName="cutsFromFront">
+    <legend>Cuts from Front</legend>
+    <div class="mb-3">
+      <label for="shank" class="form-label">Shank</label>
+      <select id="shank" formControlName="shank" class="form-select">
+        <option *ngFor="let option of shankOptions" [ngValue]="option.value">{{ option.text }}</option>
+      </select>
+      <div *ngIf="detailedCut.controls.cutsFromFront.controls.shank.invalid &&
+                  (detailedCut.controls.cutsFromFront.controls.shank.touched ||
+                    detailedCut.controls.cutsFromFront.controls.shank.dirty)"   class="alert alert-danger">
+        <div *ngIf="detailedCut.controls.cutsFromFront.controls.shank.errors?.['required']">
+          This field is required
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="brisket" class="form-label">Brisket</label>
+      <select id="brisket" formControlName="brisket" class="form-select">
+        <option *ngFor="let option of brisketOptions" [ngValue]="option.value">{{ option.text }}</option>
+      </select>
+      <div *ngIf="detailedCut.controls.cutsFromFront.controls.brisket.invalid &&
+                    (detailedCut.controls.cutsFromFront.controls.brisket.dirty ||
+                    detailedCut.controls.cutsFromFront.controls.brisket.touched)"
+                    class="alert alert-danger">
+        <div *ngIf="detailedCut.controls.cutsFromFront.controls.brisket.errors?.['required']">
+          This field is required
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="blade" class="form-label">Blade</label>
+      <select id="blade" formControlName="blade" class="form-select">
+        <option *ngFor="let option of bladeOptions" [ngValue]="option.value">{{ option.text }}</option>
+      </select>
+      <div *ngIf="detailedCut.controls.cutsFromFront.controls.blade.invalid &&
+                    (detailedCut.controls.cutsFromFront.controls.blade.dirty ||
+                    detailedCut.controls.cutsFromFront.controls.blade.touched)"
+                    class="alert alert-danger">
+        <div *ngIf="detailedCut.controls.cutsFromFront.controls.blade.errors?.['required']">
+          This field is required
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="crossRib" class="form-label">Cross-Rib</label>
+      <select id="crossRib" formControlName="crossRib" class="form-select">
+        <option *ngFor="let option of crossRibOptions" [ngValue]="option.value">{{ option.text }}</option>
+      </select>
+      <div *ngIf="detailedCut.controls.cutsFromFront.controls.crossRib.invalid &&
+                    (detailedCut.controls.cutsFromFront.controls.crossRib.dirty ||
+                    detailedCut.controls.cutsFromFront.controls.crossRib.touched)"
+                    class="alert alert-danger">
+        <div *ngIf="detailedCut.controls.cutsFromFront.controls.crossRib.errors?.['required']">
+          This field is required
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset formGroupName="cutsFromLoin">
+    <legend>Cuts from Loin</legend>
+    <div class="mb-3">
+      <label for="rib" class="form-label">Rib</label>
+      <select id="rib" formControlName="rib" class="form-select">
+        <option *ngFor="let option of ribOptions" [ngValue]="option.value">{{ option.text }}</option>
+      </select>
+        <div *ngIf="detailedCut.controls.cutsFromLoin.controls.rib.invalid &&
+                  (detailedCut.controls.cutsFromLoin.controls.rib.dirty ||
+                  detailedCut.controls.cutsFromLoin.controls.rib.touched)"
+        class="alert alert-danger">
+        <div *ngIf="detailedCut.controls.cutsFromLoin.controls.rib.errors?.['required']">
+          This field is required
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="loin" class="form-label">Loin</label>
+      <select id="loin" formControlName="loin" class="form-select">
+        <option *ngFor="let option of loinOptions" [ngValue]="option.value">{{ option.text }}</option>
+      </select>
+        <div *ngIf="detailedCut.controls.cutsFromLoin.controls.loin.invalid &&
+                  (detailedCut.controls.cutsFromLoin.controls.loin.dirty ||
+                  detailedCut.controls.cutsFromLoin.controls.loin.touched)"
+        class="alert alert-danger">
+        <div *ngIf="detailedCut.controls.cutsFromLoin.controls.loin.errors?.['required']">
+          This field is required
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="sirloin" class="form-label">Sirloin</label>
+      <select id="sirloin" formControlName="sirloin" class="form-select">
+        <option *ngFor="let option of sirloinOptions" [ngValue]="option.value">{{ option.text }}</option>
+      </select>
+        <div *ngIf="detailedCut.controls.cutsFromLoin.controls.sirloin.invalid &&
+                  (detailedCut.controls.cutsFromLoin.controls.sirloin.dirty ||
+                  detailedCut.controls.cutsFromLoin.controls.sirloin.touched)"
+        class="alert alert-danger">
+        <div *ngIf="detailedCut.controls.cutsFromLoin.controls.sirloin.errors?.['required']">
+          This field is required
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset formGroupName="cutsFromHip">
+    <legend>Cuts from Hip</legend>
+    <div class="mb-3">
+      <label for="topRound" class="form-label">Top Round</label>
+      <select id="topRound" formControlName="topRound" class="form-select">
+        <option *ngFor="let option of topRoundOptions" [ngValue]="option.value">{{ option.text }}</option>
+      </select>
+        <div *ngIf="detailedCut.controls.cutsFromHip.controls.topRound.invalid &&
+                  (detailedCut.controls.cutsFromHip.controls.topRound.dirty ||
+                  detailedCut.controls.cutsFromHip.controls.topRound.touched)"
+        class="alert alert-danger">
+        <div *ngIf="detailedCut.controls.cutsFromHip.controls.topRound.errors?.['required']">
+          This field is required
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="bottomRound" class="form-label">Bottom Round</label>
+      <select id="bottomRound" formControlName="bottomRound" class="form-select">
+        <option *ngFor="let option of bottomRoundOptions" [ngValue]="option.value">{{ option.text }}</option>
+      </select>
+        <div *ngIf="detailedCut.controls.cutsFromHip.controls.bottomRound.invalid &&
+                  (detailedCut.controls.cutsFromHip.controls.bottomRound.dirty ||
+                  detailedCut.controls.cutsFromHip.controls.bottomRound.touched)"
+        class="alert alert-danger">
+        <div *ngIf="detailedCut.controls.cutsFromHip.controls.bottomRound.errors?.['required']">
+          This field is required
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="sirloinTip" class="form-label">Sirloin Tip</label>
+      <select id="sirloinTip" formControlName="sirloinTip" class="form-select">
+        <option *ngFor="let option of sirloinTipOptions" [ngValue]="option.value">{{ option.text }}</option>
+      </select>
+        <div *ngIf="detailedCut.controls.cutsFromHip.controls.sirloinTip.invalid &&
+                  (detailedCut.controls.cutsFromHip.controls.sirloinTip.dirty ||
+                  detailedCut.controls.cutsFromHip.controls.sirloinTip.touched)"
+        class="alert alert-danger">
+        <div *ngIf="detailedCut.controls.cutsFromHip.controls.sirloinTip.errors?.['required']">
+          This field is required
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!detailedCut.valid">Next</button>
+</form>
+
+
+
+<hr/>
+
+<div class="progress pd-3">
+  <div class="progress-bar" role="progressbar" aria-label="Basic example" [ngStyle]="progress.style" [attr.aria-valuenow]="progress.aria" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+<p>{{ generalPreferences.value | json }}</p>
+
+<p>{{ detailedCut.value | json }}</p>

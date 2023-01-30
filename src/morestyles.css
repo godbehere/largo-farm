@@ -1,0 +1,31 @@
+.fsi-h {
+  font-size: 3em;
+}
+
+.bb {
+  background-color: black;
+}
+
+.display-1 {
+  font-family: "Righteous", serif, system-ui;
+  color: white;
+  padding: 4em;
+  /* background-color: black; */
+}
+
+.g-flex {
+  display: flex;
+}
+
+.g-center-all {
+  align-items: center;
+  text-align: center;
+}
+
+.thumbnail {
+  width: 250px;
+}
+
+body {
+  padding-top: 65px;
+}

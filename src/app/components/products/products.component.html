@@ -1,0 +1,73 @@
+<h2>Large Beef Order</h2>
+
+<div class="container py-3">
+
+    <main>
+        <div class="row row-cols-1 row-cols-md-2 mb-2 text-center">
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Split Side</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">$5.55<small class="text-muted fw-light">/lb.</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                    <!-- <li>10 users included</li>
+                    <li>2 GB of storage</li>
+                    <li>Email support</li>
+                    <li>Help center access</li> -->
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Get started</button>
+                </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Full Side</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">$5.25<small class="text-muted fw-light">/lb.</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                    <!-- <li>20 users included</li>
+                    <li>10 GB of storage</li>
+                    <li>Priority email support</li>
+                    <li>Help center access</li> -->
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-primary" routerLink="/beef-order">Get started</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div>
+  <button class="btn btn-primary" [ngClass]="filter === 'all' ? 'active' : '' " (click)="categoryFilter('all')">All</button>
+  <button class="btn btn-primary" [ngClass]="filter === 'beef' ? 'active' : '' " (click)="categoryFilter('beef')">Beef</button>
+  <button class="btn btn-primary" [ngClass]="filter === 'poultry' ? 'active' : '' " (click)="categoryFilter('poultry')">Poultry</button>
+  <button class="btn btn-primary" [ngClass]="filter === 'apiary' ? 'active' : '' " (click)="categoryFilter('apiary')">Apiary</button>
+</div>
+
+<div class="container">
+  <div class="row" *ngFor="let product of products">
+    <div class="col-lg"><img [routerLink]="['/products', product.product_id]" class="thumbnail" src="{{'/assets/' + product.thumbnail }}"></div>
+    <div class="col-lg"><a [routerLink]="['/products', product.product_id]">{{ product.product_name }}</a></div>
+    <div class="col-lg">{{ product.description | abbreviate }}<a [routerLink]="['/products', product.product_id]">[more]</a></div>
+
+    <div class="col-lg" *ngIf="product.quantity;else soldOut">
+      {{ product.quantity }}
+    </div>
+
+    <ng-template #soldOut>
+      <div class="col-lg">
+        Sold Out
+      </div>
+    </ng-template>
+    <div class="col-lg">{{ product.price | currency }}/{{ product.unit }}</div>
+    <div class="col-lg">
+        <button class="btn btn-primary text-nowrap" (click)="addToCart(product)">Add to cart</button>
+    </div>
+    <hr class="mt-4">
+  </div>
+</div>

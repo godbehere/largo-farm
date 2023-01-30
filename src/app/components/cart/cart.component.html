@@ -1,0 +1,27 @@
+<!-- <ng-component *ngIf="cart"> -->
+  <table class="table table-hover">
+    <thead>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Qty.</th>
+      <th>Total</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cart.products | keyvalue">
+        <td>{{ item.value.product.product_name }}</td>
+        <td>{{ item.value.product.price | currency }}</td>
+        <td>{{ item.value.quantity }}</td>
+        <td>{{ item.value.product.price * item.value.quantity | currency }}</td>
+        <td>
+          <button class="btn btn-secondary" (click)="removeItem(item.value.product)" >Remove</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{ cart.totalPrice | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+<!-- </ng-component> -->

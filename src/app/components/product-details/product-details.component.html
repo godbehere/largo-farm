@@ -1,0 +1,8 @@
+<div *ngIf="product" class="container vh-100">
+  <h2>{{ product.product_name }}</h2>
+
+  <img src="{{'/assets/' + product.thumbnail }}">
+  <p>{{ product.description }}</p>
+  <p>{{ product.price | currency }}/{{ product.unit }}</p>
+  <button class="btn" (click)="addToCart(product)">Add to cart</button>
+</div>
