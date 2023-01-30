@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo "Switching to branch main"
+git checkout main
+
+echo "Building app"
+ng build
+
+echo "Deploying files to server"
+rsync -avP dist/ root@170.187.193.117:/var/www/html/largo.godbehere.org/
