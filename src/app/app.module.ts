@@ -14,6 +14,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BeefOrderComponent } from './components/beef-order/beef-order.component';
 import { OrderFormComponent } from './components/order-form/order-form.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { OrderFormComponent } from './components/order-form/order-form.component
     ProductDetailsComponent,
     CartComponent,
     BeefOrderComponent,
-    OrderFormComponent
+    OrderFormComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
