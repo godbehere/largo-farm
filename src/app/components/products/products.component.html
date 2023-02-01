@@ -42,7 +42,7 @@
     </main>
 </div>
 
-<div>
+<div class="btn-group">
   <button class="btn btn-primary" [ngClass]="filter === 'all' ? 'active' : '' " (click)="categoryFilter('all')">All</button>
   <button class="btn btn-primary" [ngClass]="filter === 'beef' ? 'active' : '' " (click)="categoryFilter('beef')">Beef</button>
   <button class="btn btn-primary" [ngClass]="filter === 'poultry' ? 'active' : '' " (click)="categoryFilter('poultry')">Poultry</button>
